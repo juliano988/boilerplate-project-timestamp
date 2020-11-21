@@ -1,6 +1,14 @@
 // server.js
 // where your node app starts
 
+//Global variables
+let actualYear = new Date().getFullYear();
+let actualMonth = new Date().getMonth();
+let actualDay = new Date().getDate();
+let randomDate = Math.floor(Math.random()*(actualYear-1970)+1970).toString(10)+'-'+
+                   Math.floor(Math.random()*actualMonth+1).toString(10)+'-'+
+                   Math.floor(Math.random()*actualDay+1).toString(10);
+
 // init project
 var express = require('express');
 var app = express();
@@ -24,16 +32,20 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
+  
   res.sendFile(__dirname + '/views/index.html');
 });
 
-// your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+app.post("/random-date",function(req,res){
+  res.redirect('/api/timestamp/' + randomDate);
 });
 
-app.post("/api/timestamp/selected-date",function(req,res){
-  res.json({unix: Date.parse(req.body.date), utc: Date(req.body.date)});
+app.get('/api/timestamp/' + randomDate,function(req,res){
+  res.send(randomDate);
+});
+
+app.get("/api/timestamp/",function(req,res){
+  res.json({unix: Date.parse(req.query.date)});
 });
 
 // listen for requests :)

@@ -11,7 +11,9 @@
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
-		"multer": "^1.4.2"
+		"jquery": "^3.5.1",
+		"multer": "^1.4.2",
+		"nodeQuery": "0.0.9-1"
 	},
 	"engines": {
 		"node": "4.4.5"
