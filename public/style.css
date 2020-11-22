@@ -9,9 +9,8 @@ h1{
     margin-bottom: 20px;
 }
 
-#btn1, #btn2{
+button{
     margin-top: 10px;
-    width: 171.3px;
     background-color: rgb(252, 163, 17);
     font-weight: bold;
 }
